@@ -2,11 +2,11 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 
 import img1 from "../assets/banners/01.jpg"
-import img2 from "../assets/banners/02.jpg"
-import img3 from "../assets/banners/03.png"
-import img4 from "../assets/banners/04.jpg"
-import img5 from "../assets/banners/05.png"
-import img6 from "../assets/banners/06.png"
+import img2 from "../assets/banners/02.webp"
+import img3 from "../assets/banners/03.webp"
+import img4 from "../assets/banners/04.webp"
+import img5 from "../assets/banners/05.webp"
+import img6 from "../assets/banners/06.webp"
 
 const Banner = () => {
 
@@ -20,8 +20,11 @@ const Banner = () => {
                 infiniteLoop={true}
                 autoPlay={true}
                 interval={3000}
-                stopOnHover={false}
+                stopOnHover={true}
                 emulateTouch={true}
+                showArrows={false}
+                showThumbs={false}
+                swipeable={false}
                 
                 >
                 {images.map((img, index) => (
@@ -29,7 +32,7 @@ const Banner = () => {
                         <img 
                             src={img} 
                             alt={` ${index + 1}`}
-                            className="w-full object-contain" />
+                            className="w-full object-contain mt-16" />
                     </div>
                 ))}
             </Carousel>

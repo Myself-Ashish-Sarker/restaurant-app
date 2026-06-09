@@ -1,139 +1,69 @@
-import { useState, useEffect } from "react";
+import React from 'react';
+import { Link } from "react-router";
 
 const Navbar = () => {
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [expandedItems, setExpandedItems] = useState({});
-    const [isPagesHovered, setIsPagesHovered] = useState(false);
-
-    const toggleMenu = () => {
-        setIsMobileMenuOpen((prev) => !prev);
-    };
-
-    const closeMenu = () => {
-        setIsMobileMenuOpen(false);
-    };
-
-    const toggleSubmenu = (item, e) => {
-        e.stopPropagation();
-        setExpandedItems((prev) => ({
-            ...prev,
-            [item]: !prev[item],
-        }));
-    };
-
-    // Prevent body scroll when mobile menu is open
-    useEffect(() => {
-        if (isMobileMenuOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
-        }
-        return () => {
-            document.body.style.overflow = 'unset';
-        };
-    }, [isMobileMenuOpen]);
-
     return (
-        <nav className="bg-white shadow-md relative z-9999">
-            <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-                {/* Logo */}
-                <div className="text-2xl font-bold text-gray-800">Navbar</div>
-
-                {/* Mobile Menu Button */}
-                <button
-                    className="text-gray-700 text-lg focus:outline-none lg:hidden relative z-10000"
-                    onClick={toggleMenu}
-                >
-                    {isMobileMenuOpen ? "Close" : "Menu"}
-                </button>
-
-                {/* Desktop Menu */}
-                <ul className="hidden lg:flex space-x-6 items-center relative">
-                    <li className="text-gray-700 hover:text-blue-500 cursor-pointer">Home</li>
-                    <li className="text-gray-700 hover:text-blue-500 cursor-pointer">Tour</li>
-                    <li className="text-gray-700 hover:text-blue-500 cursor-pointer">Destination</li>
-
-                    {/* Pages with Hover Dropdown */}
-                    <li
-                        className="relative group text-gray-700 hover:text-blue-500 cursor-pointer"
-                        onMouseEnter={() => setIsPagesHovered(true)}
-                        onMouseLeave={() => setIsPagesHovered(false)}
-                    >
-                        Pages
-                        {/* Dropdown Menu */}
+        <>
+            <div className="navbar fixed z-10 bg-linear-to-b from-[#ffdcfd] from-1% via-white border border-gray-400">
+                <div className="navbar-start">
+                    <div className="dropdown">
+                        <div tabIndex={0} role="button" className="">
+                            <svg 
+                                xmlns="http://www.w3.org/2000/svg" 
+                                className="h-5 w-5 font-bold cursor-pointer" 
+                                fill="none" viewBox="0 0 24 24" 
+                                stroke="currentColor"> 
+                                <path 
+                                    strokeLinecap="round" 
+                                    strokeLinejoin="round" 
+                                    strokeWidth="2" 
+                                    d="M4 6h16M4 12h16M4 18h7" />
+                            </svg>
+                        </div>
                         <ul
-                            className={`absolute left-0 top-full mt-2 bg-white shadow-lg rounded-md py-2 w-48 transition-all duration-200 ${isPagesHovered ? "opacity-100 visible" : "opacity-0 invisible"
-                                }`}
-                        >
-                            <li className="px-4 py-2 hover:bg-gray-100 text-gray-700">About</li>
-                            <li className="px-4 py-2 hover:bg-gray-100 text-gray-700">Gallery</li>
-                            <li className="px-4 py-2 hover:bg-gray-100 text-gray-700">FAQ Page</li>
-                        </ul>
-                    </li>
+                            tabIndex="-1"
+                            className="menu menu-sm dropdown-content bg-base-100 rounded-none z-10 mt-6 mr-0 w-72 p-2 shadow">
+                            <li className="hover:text-blue-500"><Link>Coupons</Link></li>
+                            <li className="hover:text-blue-500"><Link>Portfolio</Link></li>
+                            <li className="hover:text-blue-500"><Link>About</Link></li>
 
-                    <li className="text-gray-700 hover:text-blue-500 cursor-pointer">Shop</li>
-                    <li className="text-gray-700 hover:text-blue-500 cursor-pointer">Blog</li>
-                    <li className="text-gray-700 hover:text-blue-500 cursor-pointer">Dashboard</li>
-                    <li>
-                        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
-                            Buy Now
-                        </button>
-                    </li>
-                </ul>
-            </div>
-
-            {/* FIXED MOBILE MENU */}
-            {isMobileMenuOpen && (
-                <>
-                    {/* 1. BACKDROP - Now properly positioned to cover the entire viewport */}
-                    <div
-                        className="fixed inset-0 bg-black/50 z-9997"
-                        onClick={closeMenu}
-                        aria-label="Close menu"
-                    />
-
-                    {/* 2. MENU CARD */}
-                    <div className="fixed lg:hidden left-0 right-0 top-18 bg-gray-50 p-4 shadow-2xl border-t border-gray-200 z-9998 max-h-[calc(100vh-72px)] overflow-y-auto">
-                        <ul className="space-y-2">
-                            <li className="text-gray-700 border-b border-gray-200 py-2" onClick={closeMenu}>Home</li>
-                            <li className="text-gray-700 border-b border-gray-200 py-2" onClick={closeMenu}>Tour</li>
-                            <li className="text-gray-700 border-b border-gray-200 py-2" onClick={closeMenu}>Destination</li>
-
-                            <li className="text-gray-700 border-b border-gray-200 py-2">
-                                <div className="flex justify-between items-center cursor-pointer" onClick={(e) => toggleSubmenu("pages", e)}>
-                                    <span>Pages</span>
-                                    <button className="text-gray-500 font-bold px-2">
-                                        {expandedItems.pages ? "-" : "+"}
-                                    </button>
+                            <div className="bg-base-100 collapse collapse-arrow">
+                                <input type="checkbox" className="peer" />
+                                <div className="collapse-title text-black peer-checked:text-indigo-600 font-bold">Burgers & Sliders</div>
+                                <div className="collapse-content">
+                                    <li className="hover:text-blue-500"><Link>Chicken Burgers</Link></li>
+                                    <li className="hover:text-blue-500"><Link>Veggie Burgers</Link></li>
+                                    <li className="hover:text-blue-500"><Link>Beef Burgers</Link></li>
                                 </div>
-                                {expandedItems.pages && (
-                                    <ul className="pl-4 pt-2 space-y-1">
-                                        <li className="text-gray-600 border-b py-2" onClick={closeMenu}>
-                                            <span>--- </span><span className="hover:text-emerald-500">About</span>
-                                        </li>
-                                        <li className="text-gray-600 border-b py-2" onClick={closeMenu}>
-                                            <span>--- </span><span className="hover:text-emerald-500">Gallery</span>
-                                        </li>
-                                        <li className="text-gray-600 py-1" onClick={closeMenu}>
-                                            <span>--- </span><span className="hover:text-emerald-500">FAQ Page</span>
-                                        </li>
-                                    </ul>
-                                )}
-                            </li>
+                            </div>
 
-                            <li className="text-gray-700 border-b border-gray-200 py-2" onClick={closeMenu}>Shop</li>
-                            <li className="text-gray-700 border-b border-gray-200 py-2" onClick={closeMenu}>Blog</li>
-                            <li className="text-gray-700 border-b border-gray-200 py-2" onClick={closeMenu}>Dashboard</li>
-                            <li onClick={closeMenu}>
-                                <button className="bg-blue-500 text-white w-full py-2 rounded-lg hover:bg-blue-600">
-                                    Buy Now
-                                </button>
-                            </li>
+                            <hr />
+
+                            <div className="bg-base-100 collapse collapse-arrow">
+                                <input type="checkbox" className="peer" />
+                                <div className="collapse-title ">Beauty</div>
+                                <div className="collapse-content">
+                                    <li><Link>Sun Screen</Link></li>
+                                    <li><Link>Face Wash</Link></li>
+                                    <li><Link>Cleaner</Link></li>
+                                </div>
+                            </div>
+
                         </ul>
                     </div>
-                </>
-            )}
-        </nav>
+
+                    <div className="px-5 font-bold">
+                        <Link className="text-2xl">BaalSaal</Link>
+                    </div>
+                </div>
+
+                <div className="navbar-end">
+                    <button className="btn px-7 py-3 bg-[#423ff4] text-white">
+                        <Link>Login</Link>
+                    </button>
+                </div>
+            </div>
+        </>
     );
 };
 
