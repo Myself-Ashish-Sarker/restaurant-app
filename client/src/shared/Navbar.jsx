@@ -172,7 +172,7 @@ const Navbar = () => {
                     </div>
 
                     <div className="px-5 font-bold">
-                        <Link to="/" className="text-2xl">BaalSaal</Link>
+                        <Link to="/" className="text-2xl font-briston">Sarker's</Link>
                     </div>
                 </div>
 

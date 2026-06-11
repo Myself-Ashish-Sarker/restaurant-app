@@ -3,43 +3,13 @@
 @plugin "daisyui" {
     themes: light --default;
 }
-
-/* --- React Responsive Carousel Overrides --- */
-.carousel .thumbs {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    padding: 0 !important;
-    margin: 1rem 0 0 0 !important;
+@font-face {
+    font-family: "briston";
+    src: url("./assets/fonts/ranille.ttf");
+    font-weight: 400;
+    font-style: normal;
 }
 
-/* Optional: Ensures even spacing between the thumbnail squares */
-.carousel .thumb {
-    margin: 0 4px !important;
-    border: 2px solid transparent !important;
-    transition: border-color 0.2s ease;
-}
-
-/* Optional: Gives the active thumbnail a crisp border color */
-/* --- React Responsive Carousel Overrides --- */
-.carousel .thumbs {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    padding: 0 !important;
-    margin: 1rem 0 0 0 !important;
-}
-
-/* Optional: Ensures even spacing between the thumbnail squares */
-.carousel .thumb {
-    margin: 0 4px !important;
-    border: 2px solid transparent !important;
-    transition: border-color 0.2s ease;
-}
-
-/* Optional: Gives the active thumbnail a crisp border color */
-.carousel .thumb.selected,
-.carousel .thumb:hover {
-    border-color: var(--color-primary, #282a2d) !important;
-    /* Uses DaisyUI primary color or fallback blue */
+@theme {
+    --font-briston: "ranille", sans-serif;
 }
