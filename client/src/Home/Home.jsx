@@ -7,13 +7,13 @@ const Home = () => {
     return (
         <div>
             <Banner />
-            {/* <div className="my-20"><Category /></div> */}
             <div 
-                className="my-5">
+                className="my-24">
                 <MainLabel />
             </div>
-
-
+            <div className="my-10">
+                <Category />
+            </div>
         </div>
     );
 };
