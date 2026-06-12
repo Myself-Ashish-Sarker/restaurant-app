@@ -11,21 +11,14 @@
 }
 
 @font-face {
-    font-family: "quincy-italic";
-    src: url("./assets/fonts/quincy-italic.ttf");
-    font-weight: 400;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: "quincy-italic";
+    font-family: "quincy-regular";
     src: url("./assets/fonts/quincy-regular.ttf");
-    font-weight: 400;
+    font-weight: 100;
     font-style: normal;
 }
 
 @theme {
     --font-briston: "ranille", sans-serif;
     --font-quincy-italic: "quincy-italic", sans-serif;
-    --font-quincy-regular: "quincy-italic", sans-serif
+    --font-quincy-regular: "quincy-regular", sans-serif
 }

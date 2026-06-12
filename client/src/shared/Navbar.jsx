@@ -13,7 +13,7 @@ const Navbar = () => {
                         <div tabIndex={0} role="button" className="">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5 font-bold cursor-pointer"
+                                className="h-7 w-7 font-black cursor-pointer "
                                 fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path
@@ -172,7 +172,7 @@ const Navbar = () => {
                     </div>
 
                     <div className="px-5 font-bold">
-                        <Link to="/" className="text-3xl font-quincy-regular italic">Sarker's</Link>
+                        <Link to="/" className="text-3xl font-quincy-regular font-semibold italic">Sarker's</Link>
                     </div>
                 </div>
 
